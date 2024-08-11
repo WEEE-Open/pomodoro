@@ -1,0 +1,24 @@
+{
+	"name": "pomodoro",
+	"version": "1.0.0",
+	"description": "Programma Opportuno alla Misurazione Ottimale Di Orari Rigorosamente Ottimali",
+	"scripts": {
+		"frontend:dev": "cd frontend && npm run dev",
+		"frontend:prod": "cd frontend && npm run build",
+		"backend:dev": "cd backend && npm run dev --host",
+		"backend:prod": "cd backend && npm run start",
+		"dev": "concurrently --names \"BACKEND,FRONTEND\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run backend:dev\" \"npm run frontend:dev\"",
+		"prod": "npm run frontend:prod && npm run backend:prod",
+		"install": "cd backend && node install.js"
+	},
+	"workspaces": [
+		"frontend",
+		"backend"
+	],
+	"author": "WEEE Open",
+	"license": "MIT",
+	"devDependencies": {
+		"concurrently": "^8.0.1"
+	},
+	"dependencies": {}
+}
