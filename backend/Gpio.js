@@ -49,11 +49,11 @@ export default class Gpio {
 				}
 			}
 			if (states.every(s => s === 1)) {
-				this.timer.stop();
+				timer.stop();
 			}
 		} else {
 			if (states.every(s => s === 0)) {
-				this.timer.start();
+				timer.start();
 				this.lastButton1Press -= 1000;
 				this.lastButton2Press -= 1000;
 			}

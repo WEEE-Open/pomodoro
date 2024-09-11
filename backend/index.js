@@ -19,6 +19,7 @@ const argv = yargs(process.argv.slice(2))
 	.argv;
 
 import Timer from "./Timer.js";
+import SerialIO from "./SerialIO.js";
 
 export const app = express();
 const httpServer = createServer(app);
@@ -29,9 +30,10 @@ export const io = new Server(httpServer, {
 });
 
 export const timer = new Timer();
+export const serialIO = new SerialIO();
 
 if (["arm", "arm64"].includes(arch)) {
-	const gpio = new (await import("array-gpio")).default();
+	const gpio = new (await import("./Gpio.js")).default();
 }
 
 if (argv.prod) {
