@@ -1,8 +1,8 @@
 #include <ezButton.h>
 
-#define BUTTON0 2
-#define BUTTON1 3
-#define RESETBUTTON 4
+#define BUTTON0 10
+#define BUTTON1 11
+#define RESETBUTTON 12
 #define LED 13
 
 ezButton button0(BUTTON0);
@@ -10,7 +10,7 @@ ezButton button1(BUTTON1);
 ezButton resetButton(RESETBUTTON);
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   pinMode(LED, OUTPUT);
   button0.setDebounceTime(50);
   button1.setDebounceTime(50);
@@ -21,6 +21,9 @@ void setup() {
 #define HIGH 1
 #define BLINKING 2
 
+int button0State = LOW;
+int button1State = LOW;
+int resetButtonState = LOW;
 int ledState = LOW;
 int blinkTime = 1000;
 unsigned long lastTime = 0;
@@ -31,19 +34,19 @@ void loop() {
   resetButton.loop();
 
   if (button0.isPressed()) {
-	Serial.println("button-0-1");
-  }
-
-  if (button0.isReleased()) {
 	Serial.println("button-0-0");
   }
 
+  if (button0.isReleased()) {
+	Serial.println("button-0-1");
+  }
+
   if (button1.isPressed()) {
-	Serial.println("button-1-1");
+	Serial.println("button-1-0");
   }
 
   if (button1.isReleased()) {
-	Serial.println("button-1-0");
+	Serial.println("button-1-1");
   }
 
   if (resetButton.isPressed()) {
@@ -51,7 +54,7 @@ void loop() {
   }
 
   if (resetButton.isReleased()) {
-	Serial.println("reset-0");
+	Serial.println("reset-1");
   }
 
   if (Serial.available()) {

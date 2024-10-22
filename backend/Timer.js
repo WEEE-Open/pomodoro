@@ -47,7 +47,7 @@ export default class Timer extends EventEmitter {
 		this.isRunning = true;
 		this.startTime = Date.now();
 		this.interval = setInterval(this.updateTime.bind(this), 100);
-		this.emit("start");
+		this.emit("timeStart");
 	}
 
 	updateTime() {
@@ -60,7 +60,7 @@ export default class Timer extends EventEmitter {
 		this.isRunning = false;
 		clearInterval(this.interval);
 		this.updateTime(); // Update one last time
-		this.emit("stop", this.value);
+		this.emit("timeStop", this.value);
 		this.submitTime();
 	}
 
@@ -68,7 +68,7 @@ export default class Timer extends EventEmitter {
 		this.isRunning = false;
 		clearInterval(this.interval);
 		this.value = 0;
-		this.emit("reset");
+		this.emit("timeReset");
 		this.emit("timeUpdate", this.value);
 	}
 
