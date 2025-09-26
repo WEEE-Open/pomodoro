@@ -136,10 +136,10 @@ export default {
 				currentAnimation.start = timestamp;
 				currentAnimation.startPosition = this.$refs.list.$el.scrollTop;
 				let clientRect = this.$refs.list.$el.getBoundingClientRect();
-				if (currentAnimation.entry.index * 100 < clientRect.height/2)
+				if (currentAnimation.entry.index * 110 < clientRect.height/2)
 					currentAnimation.endPosition = 0;
 				else {
-					currentAnimation.endPosition = Math.min(currentAnimation.entry.index * 100 - clientRect.height/2 + 100, this.$refs.list.$el.scrollHeight - clientRect.height);
+					currentAnimation.endPosition = Math.min(currentAnimation.entry.index * 110 - clientRect.height/2 + 110, this.$refs.list.$el.scrollHeight - clientRect.height);
 				}
 				if (currentAnimation.endPosition == currentAnimation.startPosition) {
 					currentAnimation.start = timestamp - currentAnimation.duration;

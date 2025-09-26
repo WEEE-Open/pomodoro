@@ -168,12 +168,13 @@ export default {
 					<button @click="editingPlayer.time += 5000">Improperly fastened/missing screw +5s</button>
 					<button @click="editingPlayer.time += 7000">Case not closed correctly +7s</button>
 					<button @click="editingPlayer.time += 10000">Incorrectly installed ram +10s</button>
+					<button @click="editingPlayer.time += 600000">Add 10 minute +10m</button>
 				</div>
 			</div>
 		</template>
 	</div>
 	<div>
-		<h2>Leaderboard</h2>
+		<h2>Leaderboard ({{ leaderboard.length }})</h2>
 		<table>
 			<tr>
 				<th></th>
